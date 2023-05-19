@@ -1,0 +1,14 @@
+Nombre del Usuario:EL COSCU  ||  Documento del Usuario: 123  ||  Edad del Usuario: 12 || Telefono del Usuario: 321 || Direccion: 32 || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: jo  ||  Documento del Usuario: 123  ||  Edad del Usuario: 12 || Telefono del Usuario: 321 || Direccion: 32 || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: jo  ||  Documento del Usuario: 123  ||  Edad del Usuario: 12 || Telefono del Usuario: 321 || Direccion: 32 || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: c  ||  Documento del Usuario: 1  ||  Edad del Usuario: 2 || Telefono del Usuario: 3 || Direccion: r || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: c  ||  Documento del Usuario: 22  ||  Edad del Usuario: 2 || Telefono del Usuario: 3 || Direccion: f || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: f  ||  Documento del Usuario: 2  ||  Edad del Usuario: 3 || Telefono del Usuario: 4 || Direccion: 5 || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: Yo pues  ||  Documento del Usuario: 233  ||  Edad del Usuario: 43 || Telefono del Usuario: 554 || Direccion: weds || Tipo del Cliente: Usuario NormalArmas Compradas: 0 || Total Gastado: 0 || Armas Compradas: null
+Nombre del Usuario: Crw  ||  Documento del Usuario: 234  ||  Edad del Usuario: 34 || Telefono del Usuario: 43546 || Direccion: sdgyhrygf || Tipo del Cliente: Usuario NormalArmas Compradas: 0 || Total Gastado: 0 || Armas Compradas: null
+Nombre del Usuario: r  ||  Documento del Usuario: 4  ||  Edad del Usuario: 5 || Telefono del Usuario: 6 || Direccion: y || Tipo del Cliente: Usuario NormalArmas Compradas: 0 || Total Gastado: 0 || Armas Compradas: null
+Nombre del Usuario: c  ||  Documento del Usuario: 1  ||  Edad del Usuario: 2 || Telefono del Usuario: 4 || Direccion: 5 || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: g  ||  Documento del Usuario: 7  ||  Edad del Usuario: 5 || Telefono del Usuario: 9 || Direccion: l || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: j  ||  Documento del Usuario: 8  ||  Edad del Usuario: 0 || Telefono del Usuario: 4 || Direccion: ertyu || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: c  ||  Documento del Usuario: 2  ||  Edad del Usuario: 3 || Telefono del Usuario: 4 || Direccion: sdfxsd || Tipo del Cliente: Usuario Normal
+Nombre del Usuario: v  ||  Documento del Usuario: 8  ||  Edad del Usuario: 67 || Telefono del Usuario: 45678 || Direccion: fghjkl || Tipo del Cliente: Usuario Normal

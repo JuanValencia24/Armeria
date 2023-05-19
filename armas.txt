@@ -1,0 +1,13 @@
+Tipo de Arma: Rifles de francotirador  ||  Nombre del Arma: Mañana  ||  Precio del arma: 2000 || Cantidad de armas disponibles: 5
+Tipo de Arma: Escopetas  ||  Nombre del Arma: Revolcer  ||  Precio del arma: 2000 || Cantidad de armas disponibles: 10
+Tipo de Arma: Escopetas  ||  Nombre del Arma: Revolcer  ||  Precio del arma: 2000 || Cantidad de armas disponibles: 10
+Tipo de Arma: Especiales  ||  Nombre del Arma: Mata ganado   ||  Precio del arma: 900000 || Cantidad de armas disponibles: 6000
+Tipo de Arma: Escopetas  ||  Nombre del Arma: Revolcer  ||  Precio del arma: 2000 || Cantidad de armas disponibles: 10
+Tipo de Arma: Especiales  ||  Nombre del Arma: Mata ganado   ||  Precio del arma: 900000 || Cantidad de armas disponibles: 6000
+Tipo de Arma: Rifles de asalto  ||  Nombre del Arma: La pupilona  ||  Precio del arma: 123444 || Cantidad de armas disponibles: 6
+Tipo de Arma: Pistolas  ||  Nombre del Arma: Escopeta Recorta  ||  Precio del arma: 50000 || Cantidad de armas disponibles: 4
+Tipo de Arma: Rifles de francotirador  ||  Nombre del Arma: trydfs  ||  Precio del arma: 22 || Cantidad de armas disponibles: 2
+Tipo de Arma: Rifles de francotirador  ||  Nombre del Arma: fyas  ||  Precio del arma: 23 || Cantidad de armas disponibles: 1
+Tipo de Arma: Rifles de francotirador  ||  Nombre del Arma: fyas  ||  Precio del arma: 23 || Cantidad de armas disponibles: 1
+Tipo de Arma: Escopetas  ||  Nombre del Arma: sdfy  ||  Precio del arma: 345 || Cantidad de armas disponibles: 4
+Tipo de Arma: Rifles de francotirador  ||  Nombre del Arma: rtyujn  ||  Precio del arma: 345678 || Cantidad de armas disponibles: 5
