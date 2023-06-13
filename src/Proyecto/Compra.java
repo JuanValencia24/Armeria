@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package Proyecto;
+
 import static Proyecto.MostrarUsuario.ruta;
-import static Proyecto.AggArms.guns;
 
 import java.awt.Image;
-
+import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -20,47 +20,63 @@ import javax.swing.table.DefaultTableModel;
  * @author CRISTIAN
  */
 public class Compra extends javax.swing.JFrame {
-    
-    
-           String[] columnNames={"TIPO DE ARMA","NOMBRE DEL ARMA","PRECIO DEL ARMA","CANTIDAD DISPONIBLE"};
 
-    public void mostrar(){}
+    String[] columnNames = {"TIPO DE ARMA", "NOMBRE DEL ARMA", "PRECIO DEL ARMA", "CANTIDAD DISPONIBLE"};
+    ArrayList<Armas> guns = DataHolder.guns;
+    ArrayList<Usuario> users = DataHolder.user;
+    DefaultTableModel mod = new DefaultTableModel(columnNames, 0);
+    
 
     /**
      * Creates new form Compra
      */
     public Compra() {
         initComponents();
-        tabla.setModel(AggArms.tab);
-        AggArms.tab.setColumnIdentifiers(columnNames);
+
+        mostrar(mod);
+        tabla.setModel(mod);
         ImageIcon img = new ImageIcon("src/Imagenes/BuyGuns.jpeg");
         Icon icono = new ImageIcon(img.getImage().getScaledInstance(comp.getWidth(), comp.getHeight(), Image.SCALE_DEFAULT));
         comp.setIcon(icono);
         this.repaint();
     }
-    
-    public void mostra(){
-        
-        for(int i=0; i<AggArms.guns.size(); i++){
-        AggArms.mos();
 
+    public void mostrar(DefaultTableModel mod) {
+        for (Armas arma : guns) {
+            Object[] rowData = {arma.getTipo(), arma.getArma(), arma.getPrecio(), arma.getCant()};
+            mod.addRow(rowData);
+        }
+
+    }
+
+    public void comprar() {
+        int x = tabla.getSelectedRow();
+        Sesion s = new Sesion();
+        if (x != -1) {
+            Armas selectedArma = guns.get(x);
+            selectedArma.cant = (short) (selectedArma.cant - 1);
+            users.forEach(user -> {
+                if (user.getCc() == s.doc) {
+                    if(user.ArmasC==null){
+                         user.setArmasC(selectedArma.getArma());
+                    }else{
+                        String armasCom = user.getArmasC()+","+selectedArma.getArma();
+                        user.setArmasC(armasCom);
+                    }
+                    
+                   
+                }
+            });
+            mod.setValueAt(selectedArma.cant, x, 3);
+            if (selectedArma.cant == 0) {
+                guns.remove(x);
+                DefaultTableModel mod = (DefaultTableModel) tabla.getModel();
+                mod.removeRow(x);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
         }
     }
-    
-    public void comprar(){
-        int x=tabla.getSelectedRow();
-        AggArms.tab.setValueAt(AggArms.guns.get(x).cant,x,2);
-        AggArms.guns.get(x).cant= (short) (AggArms.guns.get(x).cant - 1); 
-   }  
-    public void limpiar(){
-   int cant=AggArms.tab.getRowCount();
-   for(int i=0;i<cant;i++){AggArms.tab.removeRow(i);}
-   }
-    
-    
-    
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,9 +94,6 @@ public class Compra extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         comp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -139,30 +152,6 @@ public class Compra extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, 25));
-
-        jButton4.setText("MOSTRAR LAS ARMAS REGISTRADAS ANTERIORMENTE");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, -1));
-
-        jButton5.setText("TXT");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        jButton6.setText("LIMPIAR TABLA");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
         getContentPane().add(comp, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 690, 510));
 
         pack();
@@ -178,33 +167,10 @@ public class Compra extends javax.swing.JFrame {
         s.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-               
-        
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-String yo, tu;
-    yo= JOptionPane.showInputDialog("Ingrese su contraseña de administrador");
-tu= "ella no te ama";
-if(yo.equals(tu)){
-        
-            JOptionPane.showMessageDialog(null,"Una vez modificado el dato del usuario\n Presione la opcion (Archivo)y a su vez (Guardar)\n Y presiona la X para salirse y efectuar el cambio");
-            
-            JOptionPane.showMessageDialog(null,"Datos modificados satisfactoriamente");
-      
-}else{JOptionPane.showMessageDialog(null,"Usted no es administracion de la armeria");}
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        comprar();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-limpiar();
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,9 +212,6 @@ limpiar();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabla;

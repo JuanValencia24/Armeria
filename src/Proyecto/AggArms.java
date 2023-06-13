@@ -5,7 +5,7 @@
  */
 package Proyecto;
 
-import static Proyecto.VenReg_Usuario.Usp;
+
 import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -18,32 +18,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author JR
  */
 public class AggArms extends javax.swing.JFrame {
-    public static ArrayList<Armas> guns = new ArrayList();
+
     Admin ad = new Admin();
     short cantarms;
     String lista;
-    public static DefaultTableModel tab= new DefaultTableModel();
-       String[] columnNames={"TIPO DE ARMA","NOMBRE DEL ARMA","PRECIO DEL ARMA","CANTIDAD DISPONIBLE"};
 
     /**
      * Creates new form AggArms
      */
+   
 
-       
-public static DefaultTableModel mos(){
-return tab;
-}
     public AggArms() {
         initComponents();
         this.setLocationRelativeTo(null);
-        tab.setColumnIdentifiers(columnNames);
-        
         ImageIcon img = new ImageIcon("src/Imagenes/AggArmas.jpeg");
         Icon icono = new ImageIcon(img.getImage().getScaledInstance(Fondo.getWidth(), Fondo.getHeight(), Image.SCALE_DEFAULT));
         Fondo.setIcon(icono);
@@ -151,57 +143,55 @@ return tab;
     }// </editor-fold>//GEN-END:initComponents
 
     private void GunListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GunListActionPerformed
-         
-         
+
+
     }//GEN-LAST:event_GunListActionPerformed
 
     private void regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regActionPerformed
-        lista=GunList.getSelectedItem().toString();
-        cantarms=Short.parseShort(cant.getValue().toString());
+        lista = GunList.getSelectedItem().toString();
+        cantarms = Short.parseShort(cant.getValue().toString());
         byte est = 1;
-        JOptionPane.showMessageDialog(null, cantarms);
-        if(!lista.equals("Seleccione...")&&cantarms!=0&&!this.Precio.getText().equals("")&&!this.Arma.getText().equals("")){
+        if (!lista.equals("Seleccione...") && cantarms != 0 && !this.Precio.getText().equals("") && !this.Arma.getText().equals("")) {
             int price = Integer.parseInt(this.Precio.getText());
-            guns.add(new Armas(lista, Arma.getText(), cantarms, price));
+            DataHolder.guns.add(new Armas(lista, Arma.getText(), cantarms, price));
             ////////////////////////////////////////////////////////////////////////////////////////////
-         
-           //////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-            tab.addRow(new Object[]{this.lista,this.Arma.getText(),this.Precio.getText(),this.cant.getValue().toString()});
-            
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
             GunList.setSelectedItem("Seleccione...");
-            for(int i=0;i<guns.size();i++){
-                JOptionPane.showMessageDialog(null, guns.get(i).Arma+"\n"+guns.get(i).Tipo+"\n"+guns.get(i).cant);
-            }
+           
             cant.setValue(0);
             Precio.setText("");
             est = 0;
             Arma.setText("");
+        } else {
+            String errores = "";
+            if (lista.equals("Seleccione...")) {
+                errores += "- El tipo de arma\n";
+            }
+            if (Precio.getText().equals("")) {
+                errores += "- Precio para esta arma, la va a regalar o que?\n";
+            }
+            if (Arma.getText().equals("")) {
+                errores += "- Nombre del arma\n";
+            }
+            if (cantarms == 0) {
+                errores += "- Cantidad de armas con estas caracteristicas que desea registrar\n";
+            }
+            JOptionPane.showMessageDialog(null, "Falta por ingresar:\n" + errores, "AVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
-        else{
-            String errores="";
-            if(lista.equals("Seleccione...")){
-                errores+="- El tipo de arma\n";
-            }
-            if(Precio.getText().equals("")){
-                errores+="- Precio para esta arma, la va a regalar o que?\n";
-            }
-            if(Arma.getText().equals("")){
-                errores+="- Nombre del arma\n";
-            }
-            if(cantarms==0){
-                errores+="- Cantidad de armas con estas caracteristicas que desea registrar\n";
-            }
-            JOptionPane.showMessageDialog(null, "Falta por ingresar:\n"+errores,"AVERTENCIA", JOptionPane.WARNING_MESSAGE);
-        }
-        
-        
+
+
     }//GEN-LAST:event_regActionPerformed
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         setVisible(false);
         ad.setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_volverActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

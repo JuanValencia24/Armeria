@@ -10,10 +10,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author CRISTIAN
- */
+
 public class Admin extends javax.swing.JFrame {
 Ventana v = new Ventana();
 MostrarUsuario mu = new MostrarUsuario();

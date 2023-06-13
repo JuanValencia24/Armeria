@@ -5,7 +5,6 @@
  */
 package Proyecto;
 
-import static Proyecto.VenReg_Usuario.tab;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.io.BufferedReader;
@@ -33,27 +32,30 @@ public class MostrarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form MostrarUsuario
      */
-   String[] columnNames={"NOMBRES","CEDULA","EDAD","TELEFONO","DIRECCIÓN","TIPO DE USUARIO","ARMAS COMPRADAS"};
-       
-   
-   public static String ruta = System.getProperties().getProperty("user.dir")+"//";
+    String[] columnNames = {"NOMBRES", "CEDULA", "EDAD", "TELEFONO", "DIRECCIÓN", "TIPO DE USUARIO", "ARMAS COMPRADAS"};
+    ArrayList<Usuario> users = DataHolder.user;
+    DefaultTableModel mod = new DefaultTableModel(columnNames, 0);
+
+    public static String ruta = System.getProperties().getProperty("user.dir") + "//";
 
     public MostrarUsuario() {
         initComponents();
-        VenReg_Usuario.tab.setColumnIdentifiers(columnNames);
-        tabla.setModel(VenReg_Usuario.tab);
+        mostrar(mod);
+        tabla.setModel(mod);
         setLocationRelativeTo(null);
         ImageIcon img = new ImageIcon("src/Imagenes/usuarios.jpg");
         Icon icono = new ImageIcon(img.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
         fondo.setIcon(icono);
         this.repaint();
     }
- 
-   public void limpiar(){
-   int cant=VenReg_Usuario.tab.getRowCount();
-   for(int i=0;i<cant;i++){VenReg_Usuario.tab.removeRow(i);}
-   }
-  
+
+    
+     public void mostrar(DefaultTableModel mod) {
+       for(Usuario usuario : users ){
+           Object[] rowData = {usuario.getNombre(),usuario.cc,usuario.edad,usuario.tel,usuario.dire,usuario.estado,usuario.ArmasC};
+           mod.addRow(rowData);
+       }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -64,8 +66,6 @@ public class MostrarUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,54 +113,30 @@ public class MostrarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 134, 35));
-
-        jButton5.setText("MODIFICAR USUARIO");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 415, 210, 40));
-
-        jButton6.setText("MOSTRAR USUARIOS ");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, 50));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 840, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-System.exit(0);        // TODO add your handling code here:
+        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Ventana v = new Ventana();
         Admin ad = new Admin();
-        
+
         v.setVisible(false);
         ad.setVisible(true);
         dispose();
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -197,8 +173,6 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;

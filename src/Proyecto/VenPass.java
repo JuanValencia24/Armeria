@@ -100,7 +100,6 @@ public class VenPass extends javax.swing.JFrame {
         trys++;
             if(VenPass.password.getText().equals("admin")){
                 dispose();
-                JOptionPane.showMessageDialog(null,"Contraseña correcta ✔","BIEN",JOptionPane.INFORMATION_MESSAGE);
                 ad.setVisible(true);
                 ad.setLocationRelativeTo(null);
             }

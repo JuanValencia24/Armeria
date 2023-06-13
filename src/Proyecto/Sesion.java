@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Proyecto;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author JR
- */
 
 public class Sesion extends javax.swing.JFrame {
-    
+    ArrayList<Usuario> user = DataHolder.user;
     VenReg_Usuario vr = new VenReg_Usuario();
     Compra cp = new Compra();
+     public static int doc;
+    
     
     public Sesion() {
         initComponents();
@@ -156,7 +151,7 @@ public class Sesion extends javax.swing.JFrame {
     byte trys=3;
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
         String name = "";
-        int doc = 0;
+        doc = 0;
         if(userdoc.getText().equals("")){
             userdoc.setText("-Vacio-");
         }else{
@@ -168,15 +163,14 @@ public class Sesion extends javax.swing.JFrame {
         else{
             name=username.getText();
         }
-        if(!VenReg_Usuario.Usp.isEmpty()){
-            for(int i=0; i<VenReg_Usuario.Usp.size();i++){
-                if(VenReg_Usuario.Usp.get(i).cc==doc&&VenReg_Usuario.Usp.get(i).nombre.equals(name)){
-                    JOptionPane.showMessageDialog(null,"USUARIO ENCONTRADO \n", "✅", JOptionPane.PLAIN_MESSAGE);
+        if(!user.isEmpty()){
+            for(int i=0; i<user.size();i++){
+                if(user.get(i).cc==doc&&user.get(i).nombre.equals(name)){
                     dispose();
                     cp.setVisible(true);
                 }
-                if(i==VenReg_Usuario.Usp.size()-1&&!VenReg_Usuario.Usp.get(i).nombre.equals(name)||
-                   i==VenReg_Usuario.Usp.size()-1&&VenReg_Usuario.Usp.get(i).cc!=doc){
+                if(i==user.size()-1&&!user.get(i).nombre.equals(name)||
+                   i==user.size()-1&&user.get(i).cc!=doc){
                     trys--;
                     if(trys!=0){
                         JOptionPane.showMessageDialog(null, "Usuario o documento incorrecto o puede que este usuario no este registrado","ERROR",JOptionPane.ERROR_MESSAGE);

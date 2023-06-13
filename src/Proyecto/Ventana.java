@@ -45,7 +45,6 @@ public class Ventana extends javax.swing.JFrame {
 
         Registro = new javax.swing.JButton();
         compra = new javax.swing.JButton();
-        Extras1 = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
         Main = new javax.swing.JLabel();
 
@@ -76,18 +75,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 140, 30));
-
-        Extras1.setBackground(new java.awt.Color(0, 0, 0));
-        Extras1.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
-        Extras1.setForeground(new java.awt.Color(204, 204, 204));
-        Extras1.setText("Extras");
-        Extras1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Extras1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Extras1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Extras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 140, 30));
 
         logo.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 160, 110));
@@ -129,10 +116,6 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RegistroActionPerformed
 
-    private void Extras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Extras1ActionPerformed
-
-    }//GEN-LAST:event_Extras1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -170,7 +153,6 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Extras1;
     private javax.swing.JLabel Main;
     private javax.swing.JButton Registro;
     private javax.swing.JButton compra;

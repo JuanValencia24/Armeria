@@ -5,8 +5,6 @@
  */
 package Proyecto;
 
-
-import static Proyecto.AggArms.tab;
 import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -20,77 +18,48 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author CRISTIAN
- */
-public class VenReg_Usuario extends javax.swing.JFrame {
-String normal="Usuario_Normal", vip="Usuario_Vip", es;
 
-   public static ArrayList<Usuario> Usp= new ArrayList();
-    
-   
-   public static DefaultTableModel tab= new DefaultTableModel();
-       String[] columnNames={"NOMBRE","CEDULA","EDAD","TELEFONO","DIRECCION","TIPO DE USUARIO","ARMAS COMPRADAS","TOTAL DE COMPRAS","ARMA COMPRADA"};
-       
-       
-    public static String ruta = System.getProperties().getProperty("user.dir")+"//";
+public class VenReg_Usuario extends javax.swing.JFrame {
+
+    String normal = "Usuario_Normal", vip = "Usuario_Vip", es;
+ 
+
+    public static String ruta = System.getProperties().getProperty("user.dir") + "//";
     public static Object ArmasC;
     public static Object arma;
     public static Object total;
 
-     
-     public void guardar(String nombre, String dire, int cc, int tel, byte edad, String estado, int arma, int total, String ArmasC) throws FileNotFoundException, IOException{
-     
-        ArmasC= null;
-         total= 0;
-         arma= 0;
-         Usp.add(new Usuario(nombre,dire,cc,tel,edad,estado,arma,total,ArmasC));
-         //////////////////////////////////////////
-         
-       
-     int norm;
-        
-        int cupon=1006188941;   
-     if( "Usuario VIP".equals(es)){      
-        norm=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el numero de cupon para ser usuario Vip"));      
-        if(norm==cupon){         
-        estado=vip;
-        JOptionPane.showMessageDialog(null,"Enhorabuena su estado sera de: "+estado);
-        }else{
-            estado=normal;
-            JOptionPane.showMessageDialog(null,"Lo sentimos su estado sera de: "+estado);}
-        }else {
-         estado=normal;
-         JOptionPane.showMessageDialog(null,"Sera registrado como: "+estado);
-              }
-     
-     ////////////////////////////////////////////////////////////////////7
-        if("Usuario Normal".equals(es)){
-        estado=normal;
-        JOptionPane.showMessageDialog(null,"Enhorabuena su estado sera de: "+estado);
+    public void guardar(String nombre, String dire, int cc, String tel, byte edad, String estado, int arma, int total, String ArmasC) throws FileNotFoundException, IOException {
+
+        ArmasC = null;
+        total = 0;
+        arma = 0;
+        DataHolder.user.add(new Usuario(nombre, dire, cc, tel, edad, estado, arma, total, ArmasC));
+        //////////////////////////////////////////      
+
+        int norm;
+
+        int cupon = 1006188941;
+        if ("Usuario VIP".equals(es)) {
+            norm = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el numero de cupon para ser usuario Vip"));
+            if (norm == cupon) {
+                estado = vip;
+                JOptionPane.showMessageDialog(null, "Enhorabuena su estado sera de: " + estado);
+            } else {
+                estado = normal;
+                JOptionPane.showMessageDialog(null, "Lo sentimos su estado sera de: " + estado);
+            }
+        } else {
+            estado = normal;
+            JOptionPane.showMessageDialog(null, "Sera registrado como: " + estado);
         }
-        
-        
-        
-        
-        
+
+        ////////////////////////////////////////////////////////////////////7
        
-        
-        
-     
-        
-            tab.addRow(new Object[] {this.nombre.getText(),this.dire.getText(),this.cc.getText(),this.tel.getText(),this.edad.getText(),this.estado.getSelectedItem(),this.arma,this.total,this.ArmasC});
-     
-     
-     }
-     public void mostraractuales(){
-        
-        for(int i=0; i<this.Usp.size();i++){
-            tab.addRow(new Object[] {this.nombre.getText(),this.dire.getText(),this.cc.getText(),this.tel.getText(),this.edad.getText(),this.estado.getSelectedItem(),this.arma,this.total,this.ArmasC});
-        }
     }
-     
+
+    
+
     public VenReg_Usuario() {
         initComponents();
         setLocationRelativeTo(null);
@@ -99,7 +68,6 @@ String normal="Usuario_Normal", vip="Usuario_Vip", es;
         fondo.setIcon(icono);
         this.repaint();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,6 +137,12 @@ String normal="Usuario_Normal", vip="Usuario_Vip", es;
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
         jLabel6.setText("Telefono:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 229, -1, 30));
+
+        tel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telActionPerformed(evt);
+            }
+        });
         getContentPane().add(tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 230, 260, 30));
 
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
@@ -229,31 +203,30 @@ String normal="Usuario_Normal", vip="Usuario_Vip", es;
     }//GEN-LAST:event_ccActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try {
-           int arma = 0,total= 0;
-           String ArmasC = null;
-           this.guardar(this.nombre.getText(),this.dire.getText(), Integer.parseInt(this.cc.getText()),Integer.parseInt(this.tel.getText()), (byte) Integer.parseInt(this.edad.getText()), (String) this.estado.getSelectedItem(),arma,total,ArmasC);
+        try {
+            int arma = 0, total = 0;
+            String ArmasC = null;
+            this.guardar(this.nombre.getText(), this.dire.getText(), Integer.parseInt(this.cc.getText()), this.tel.getText(), (byte) Integer.parseInt(this.edad.getText()), (String) this.estado.getSelectedItem(), arma, total, ArmasC);
 
-            
-        
-       } catch (IOException ex) {
-           Logger.getLogger(VenReg_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-       }
-          
-            this.nombre.setText("");
-            this.dire.setText("");
-            this.cc.setText("");
-            this.tel.setText("");
-            this.edad.setText("");
-            JOptionPane.showMessageDialog(null,"Se ha registrado correctamente");   
-        
-           
-JOptionPane.showMessageDialog(null, Usp.get(0).nombre+" "+Usp.get(0).cc);
-        
+        } catch (IOException ex) {
+            Logger.getLogger(VenReg_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        this.nombre.setText("");
+        this.dire.setText("");
+        this.cc.setText("");
+        this.tel.setText("");
+        this.edad.setText("");
+       
+        Sesion s = new Sesion();
+
+        setVisible(false);
+        s.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         System.exit(0);        
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -266,6 +239,10 @@ JOptionPane.showMessageDialog(null, Usp.get(0).nombre+" "+Usp.get(0).cc);
     private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
         es = estado.getSelectedItem().toString();        // TODO add your handling code here:
     }//GEN-LAST:event_estadoActionPerformed
+
+    private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telActionPerformed
 
     /**
      * @param args the command line arguments
