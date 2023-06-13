@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Proyecto;
 
 import static Proyecto.MostrarUsuario.ruta;
@@ -15,10 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author CRISTIAN
- */
+
 public class Compra extends javax.swing.JFrame {
 
     String[] columnNames = {"TIPO DE ARMA", "NOMBRE DEL ARMA", "PRECIO DEL ARMA", "CANTIDAD DISPONIBLE"};
@@ -27,9 +20,7 @@ public class Compra extends javax.swing.JFrame {
     DefaultTableModel mod = new DefaultTableModel(columnNames, 0);
     
 
-    /**
-     * Creates new form Compra
-     */
+
     public Compra() {
         initComponents();
 

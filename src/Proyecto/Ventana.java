@@ -10,15 +10,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author JR
- */
+
 public class Ventana extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ventana
-     */
+
     public Ventana() {
         initComponents();
         this.setTitle("Pistoleria FerRicGuns");
